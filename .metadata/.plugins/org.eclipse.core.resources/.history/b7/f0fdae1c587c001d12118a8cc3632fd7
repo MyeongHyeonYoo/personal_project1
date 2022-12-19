@@ -1,0 +1,22 @@
+package test;
+
+import java.util.ArrayList;
+
+public class arrayLIstChange2 {
+
+	public static void main(String[] args) {
+		ArrayList<String> arrayList = new ArrayList<>();
+
+
+		arrayList.add("Test1");
+
+		arrayList.add("Test2");
+
+		arrayList.add("Test3");
+
+		String[] array = arrayList.toArray(new String[arrayList.size()]);
+		System.out.println(array[0]);
+		System.out.println(array[1]);
+		System.out.println(array[2]);
+	}
+}

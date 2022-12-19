@@ -1,0 +1,80 @@
+package test;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
+
+public class pro1_test {
+
+	public static void main(String[] args) {
+
+			int number;//실행할 번호를 입력받음
+			String name; String department; String workernum;
+			Scanner r=new Scanner(System.in);
+			HashMap<String, String> dic =new HashMap<String, String>();
+			System.out.println("사원관리프로그램 관리자모드");
+	
+			while(true){//무한 루프
+			do{
+			System.out.println("1.등록 2.삭제 3.찾기 4.전체보기 5.종료");
+			System.out.print("번호선택 : ");
+			number=r.nextInt();
+			}while((number<1)||(number>5));//number<1 or number>5일때 다시 입력받음
+	
+			if(number==5){//5번 입력시
+			System.out.println("프로그램이 종료됩니다.");
+			break;
+			}
+	
+			//스위치 문 시작
+			switch(number){
+			case 1: //등록
+			//입력
+			System.out.print("이름 입력 : ");
+			name=r.next();
+			System.out.print("부서 입력 : ");
+			department=r.next();
+			System.out.print("사원번호 입력 : ");
+			workernum=r.next();
+	
+			//부서와 사원번호를 합쳐서 저장함
+			String all=name+" "+department;
+			dic.put(workernum, all);
+			break;
+	
+			case 2: //삭제
+			//입력
+			System.out.print("사원번호 입력 : ");
+			workernum=r.next();
+			if(dic.containsKey(workernum)){//사원번호가 존재하면
+			dic.remove(workernum);
+			System.out.println("삭제가 완료되었습니다.");
+			}else{//사원번호가 존재하지 않는다면
+			System.out.println("존재하지 않는 사원번호입니다.");
+			}
+			break;
+	
+			case 3: //찾기
+			//입력
+			System.out.print("사원번호 입력 : ");
+			workernum=r.next();
+			//출력
+			System.out.println(workernum+" "+dic.get(workernum));
+			break;
+	
+			case 4: //전체보기
+			Set<String> keys=dic.keySet();
+			Iterator<String> it =keys.iterator();
+			//입력된 모든 데이터 출력
+			while(it.hasNext()){
+			String key=it.next();
+			String value=dic.get(key);
+			System.out.println(key+" "+value);
+			}
+			break;
+			}
+		}
+	}
+
+}

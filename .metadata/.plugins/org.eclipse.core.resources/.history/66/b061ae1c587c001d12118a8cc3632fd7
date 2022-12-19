@@ -1,0 +1,12 @@
+package test;
+
+public class StringBuffer {
+
+	public static void main(String[] args) {
+		int n = Integer.MAX_VALUE;
+		String str = new StringBuilder().append(n).toString();
+		System.out.println(str);
+
+	}
+
+}

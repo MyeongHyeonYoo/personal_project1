@@ -1,0 +1,18 @@
+package test0;
+
+import java.util.Scanner;
+
+public class imsi {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("임시테스트 1: ");
+		String n = input.nextLine();
+		System.out.printf("\r%s", n);
+		System.out.printf("\r");
+		System.out.print("임시테스트 2: ");
+		String b = input.nextLine();
+		System.out.printf("\r%s", b);
+	}
+
+}

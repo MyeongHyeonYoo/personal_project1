@@ -1,0 +1,28 @@
+package test;
+
+import java.util.ArrayList;
+
+public class arrayLIstChange {
+
+	public static void main(String[] args) {
+		ArrayList<String> arrayList = new ArrayList<>();
+		int size=0;
+		
+		arrayList.add("Test1");
+		System.out.println(arrayList);
+		arrayList.add("Test2");
+		
+		arrayList.add("Test3");
+
+		String[] array = new String[arrayList.size()];
+		
+		for(String temp : arrayList) {
+		  array[size++] = temp;
+		}
+		System.out.println(array[0]);
+		System.out.println(array[1]);
+		System.out.println(array[2]);
+	
+	}
+
+}

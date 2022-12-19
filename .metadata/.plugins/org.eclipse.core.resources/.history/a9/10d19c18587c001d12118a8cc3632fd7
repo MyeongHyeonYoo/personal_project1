@@ -1,0 +1,15 @@
+package test ;
+
+public class Sqrt {
+
+	public static void main(String[] args) {
+		int num = 1;
+		double result = Math.sqrt(25);
+		System.out.println(result);
+		
+		int num2 = 3;
+		double result2 = Math.pow(3, 2);
+		System.out.println(result2);
+	}
+
+}

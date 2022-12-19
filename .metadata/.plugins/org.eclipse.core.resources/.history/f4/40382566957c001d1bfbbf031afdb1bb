@@ -1,0 +1,181 @@
+package companySystemFinal;
+ 
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+    	EzenCompany company = new EzenCompany();
+    	EzenCompanyEmployee employee = new EzenCompanyEmployee();
+        Scanner input = new Scanner(System.in);
+        
+        String loginID = null;
+        String mode = "";
+
+        int i= 0;
+        while(i<3) {            
+	        if(loginID==null) { //아직 로그인하기 전 상황이면 
+	           System.out.println("=== EZEN COMPANY 사원 관리 프로그램 ===");
+	           System.out.println("  ┌────────────────────────┐");
+	           System.out.println("            로 그 인          ");
+	           System.out.println("  └────────────────────────┘");
+	           String enterID = "";
+	           String enterPWD = "";
+	            
+	           System.out.print("   아이디  : ");
+	           enterID = input.nextLine();
+	           System.out.println();
+	           System.out.print("   비밀번호 : ");
+	           enterPWD = input.nextLine();
+	           System.out.println();
+	           
+	           if ( enterID.equals("1") && enterPWD.equals("1") ) {
+	        	   mode = "관리자";
+	        	   loginID = enterID;
+	        	   break;
+	           } else if ( !enterID.equals("1") && !enterPWD.equals("1") ) {
+	        	   mode = enterID;
+	        	   loginID = enterID;
+	        	   break;
+	           } else {
+	        	   System.out.println("\n ID 또는 Password를 다시 확인해 주세요.\n");
+	        	   i++;
+	        	   if (i == 3) {
+	                   System.out.println(" ID 및 Password 입력을 3회 초과하였습니다.");
+	                   System.out.println("\n\n 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓\n");
+	                    System.out.print(" 접근 위반입니다. \n   다시 시도해 주세요");
+	                    
+	                    System.out.print("."); company.timer(800);
+	                    System.out.print("."); company.timer(800);
+	                    System.out.print("."); company.timer(800);
+	                    System.out.print("."); company.timer(800);
+	                    System.out.println();
+	                    System.out.println("    3초 후 자동으로 종료됩니다.");
+	                    company.timer(800); company.timer(800); company.timer(800); 
+
+	                    System.out.println("\n\n 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+	                    System.out.println("\n    시스템을 종료합니다.");
+	                    System.exit(0);
+	                }    
+	        	   continue;	        	   
+	           }            
+	        }
+        }
+	        
+        while(true) {
+            System.out.println("  ========= " + mode + "님 환영합니다! ========");
+            System.out.println("  [ 이젠컴퍼니 사원관리 프로그램을 시작합니다 ] ");
+            System.out.println("     1. 등록");
+            System.out.println("     2. 전체 사원정보 출력");
+            System.out.println("     3. 수정");
+            System.out.println("     4. 검색");
+            System.out.println("     5. 삭제");
+            System.out.println("     6. 종료");
+            System.out.print(">>>");
+            int select = input.nextInt();
+            switch (select) {
+            case 1:
+            	if(mode.equals("관리자")) {
+            		company.saveWorker();
+            		System.out.println();
+            	} else if(!mode.equals("관리자")){ //사용자이면
+            		employee.saveWorker();
+            		System.out.println();
+            	}
+                continue;
+            case 2:
+            	if(mode.equals("관리자")) {
+            		company.output();
+            		System.out.println();
+            	} else if(!mode.equals("관리자")){
+            		System.out.println("열람 권한이 없습니다.");
+            		System.out.println();
+            	}
+                continue;
+            case 3:
+            	if(mode.equals("관리자")) {
+            		company.modify();
+            		System.out.println();
+            	} else if(!mode.equals("관리자")){
+            		System.out.println("수정 권한이 없습니다.");
+            		System.out.println();
+            	}
+                continue;
+            case 4: //검색
+            	if(mode.equals("관리자")) {
+            		System.out.println("1. 사원 정보 | 2. 연차 조회 | 3. 수당 조회 | 4.퇴직금 및 연봉인상율 조회");
+            		String selectNum = input.next();
+            		if(selectNum.equals("1")) {
+            			company.search();
+            			System.out.println();
+            		} else if(selectNum.equals("2")) {
+            			company.annualLeave();
+            			System.out.println();
+            		} else if(selectNum.equals("3")) {
+            			System.out.println("1. 연차휴가 수당 | 2. 초과근무 수당 ");
+            			String selectPay = input.next();
+            	   		if(selectPay.equals("1")) {
+                			company.weeklyAllowance();
+                			System.out.println();
+                		} else if(selectPay.equals("2")) {
+                			company.overtimePay();
+                			System.out.println();
+                		} 
+            		} else if(selectNum.equals("4")) {
+            			company.severancePay();
+            			System.out.println();
+            		}
+            	} else if(!mode.equals("관리자")){
+            		System.out.println("1. 사원 정보 | 2. 연차 조회 | 3. 수당 조회 | 4.퇴직금 및 연봉인상율 조회");
+            		String selectNum = input.next();
+            		if(selectNum.equals("1")) {
+            			employee.search();
+            			System.out.println();
+            		} else if(selectNum.equals("2")) {
+            			company.annualLeave();
+            			System.out.println();
+            		} else if(selectNum.equals("3")) {
+            			System.out.println("1. 연차휴가 수당 | 2. 초과근무 수당 ");
+            			String selectPay = input.next();
+            	   		if(selectPay.equals("1")) {
+                			company.weeklyAllowance();
+                			System.out.println();
+                		} else if(selectPay.equals("2")) {
+                			company.overtimePay();
+                			System.out.println();
+                		} 
+            		} else if(selectNum.equals("4")) {
+            			company.severancePay();
+            			System.out.println();
+            		}
+            	}
+                continue;  
+            case 5: //삭제
+             	if(mode.equals("관리자")) {
+            		company.delete();
+            		System.out.println();
+            	} else if(!mode.equals("관리자")){
+            		System.out.println("수정 권한이 없습니다.");
+            		System.out.println();
+            	}
+                continue;
+            case 6:
+                System.out.print("."); company.timer(800);
+                System.out.print("."); company.timer(800);
+                System.out.print("."); company.timer(800);
+                System.out.print("."); company.timer(800);
+                System.out.println();
+                System.out.println("    3초 후 자동으로 종료됩니다.");
+                company.timer(800); company.timer(800); company.timer(800); 
+
+                System.out.println("\n\n 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+                System.out.println("\n    시스템을 종료합니다.");
+                System.exit(0);
+            default:
+                System.out.println("잘못된 입력");
+                continue;
+            } 
+            
+        }
+        
+    }
+}

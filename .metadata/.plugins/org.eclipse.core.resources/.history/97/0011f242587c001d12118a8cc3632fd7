@@ -1,0 +1,10 @@
+package test0;
+
+public class imsi {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

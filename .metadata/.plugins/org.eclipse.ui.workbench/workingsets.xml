@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+	<workingSet
+		editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet"
+		factoryID="org.eclipse.ui.internal.WorkingSetFactory"
+		id="1670338979213_0" label="Java Main Sources"
+		name="Java Main Sources" />
+	<workingSet
+		editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet"
+		factoryID="org.eclipse.ui.internal.WorkingSetFactory"
+		id="1670338979234_1" label="Java Test Sources"
+		name="Java Test Sources" />
+	<workingSet aggregate="true"
+		factoryID="org.eclipse.ui.internal.WorkingSetFactory"
+		id="1670338982457_2" label="Window Working Set"
+		name="Aggregate for window 1670338982456" />
+	<workingSet aggregate="true"
+		factoryID="org.eclipse.ui.internal.WorkingSetFactory"
+		id="1670339179976_3" label="Window Working Set"
+		name="Aggregate for window 1670339179976" />
+</workingSetManager>
